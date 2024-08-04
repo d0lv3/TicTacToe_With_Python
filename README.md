@@ -1,4 +1,4 @@
-Tic-Tac-Toe Game in Python
+**Tic-Tac-Toe Game in Python**
 
 This is a text-based implementation of the classic game Tic-Tac-Toe, developed by Abdallah Alnuaimy. It allows two players to take turns marking spaces on a 3x3 grid with X's and O's. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.
 
@@ -45,7 +45,7 @@ This is a text-based implementation of the classic game Tic-Tac-Toe, developed b
 - **Input Validation:** Prevents invalid inputs (out-of-range numbers, already occupied positions).
 - **Game Logic:**  Handles win/draw conditions correctly and determines the next player's turn.
 
-**Future Enhancements (Optional):**
+**Future Enhancements:**
 
 - **Graphical User Interface (GUI):**  Enhance the visual experience by creating a graphical interface.
 - **AI Opponent:** Implement an AI player using algorithms like Minimax to make the game more challenging.
@@ -56,14 +56,14 @@ This is a text-based implementation of the classic game Tic-Tac-Toe, developed b
 **How to Run the Game**
 
 1. **Clone the Repository:** 
-   -bash
+   ```bash
    git clone <repository_url>
-   
+   ```
 2. **Navigate to the Directory:**
-    -bash
+    ```bash
     cd tic-tac-toe-python
-  
+    ```
 3. **Run the Script:**
-    -bash
+    ```bash
     python tictactoe.py
-   
+    ```
