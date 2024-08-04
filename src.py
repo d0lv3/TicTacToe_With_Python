@@ -49,6 +49,9 @@ def xoImplementation(Turn):
             if inp in reserved_places:
                 print("Wrong input! Reserved place, try again please.")
                 continue
+            elif int(inp) < 1 or int(inp) > 9:
+                print("Wrong input!, try again please.")
+                continue
             for i in struc.keys():
                 if inp == i[-1]:
                     struc[i] = 'X'
@@ -63,6 +66,9 @@ def xoImplementation(Turn):
             inp = input()
             if inp in reserved_places:
                 print("Wrong input! Reserved place, try again please.")
+                continue
+            elif int(inp) < 1 or int(inp) > 9:
+                print("Wrong input!, try again please.")
                 continue
             for i in struc.keys():
                 if inp == i[-1]:
@@ -85,8 +91,8 @@ def end(State):
         print("it's a DRAW!")
     else:
         print(f"Congratulations! {State} Won!")
-    choice = input("Would you like to play again? \nEnter (y) for Yes and (n) for No: ")
     while True:
+        choice = input("Would you like to play again? \nEnter (y) for Yes and (n) for No: ")
         if choice in ['y', 'Y']:
             main_menu()
         elif choice in ['n', 'N']:
