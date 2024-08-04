@@ -1,6 +1,6 @@
 **Tic-Tac-Toe Game in Python**
 
-This is a text-based implementation of the classic game Tic-Tac-Toe, developed by Abdallah Alnuaimy. It allows two players to take turns marking spaces on a 3x3 grid with X's and O's. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.
+This is a text-based implementation of the classic game Tic-Tac-Toe. It allows two players to take turns marking spaces on a 3x3 grid with X's and O's. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.
 
 **How to Play**
 
