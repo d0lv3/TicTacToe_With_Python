@@ -1,69 +1,102 @@
-**Tic-Tac-Toe Game in Python**
+from random import randint
+from time import sleep
+def main_menu():
+    print("Welcome to TicTacToe By Abdallah Alnuaimy")
+    print("Starting the Toss", end="")
+    for _ in range(0, 3):
+        sleep(0.5)
+        print(".", end="")
+        sleep(0.5)
+    print()
+    Turn = Toss()
+    print(f"{Turn} Starting:")
+    xoImplementation(Turn)
+    
+def xoImplementation(Turn):
+    n = 0
+    reserved_places = []
+    struc = {'n1' : "1",
+             'n2' : "2",
+             'n3' : "3",
+             'n4' : "4",
+             'n5' : "5",
+             'n6' : "6",
+             'n7' : "7",
+             'n8' : "8",
+             'n9' : "9"}
+    
+    
+    while n<=9:
+        print(f"   {struc['n1']}  |  {struc['n2']}  |  {struc['n3']}  \n--------------------\n   {struc['n4']}  |  {struc['n5']}  |  {struc['n6']}  \n--------------------\n   {struc['n7']}  |  {struc['n8']}  |  {struc['n9']}   ")
+        
+        #Checking the winner conds
+        if n>=5 and n<=9:
+            winning_probs = [(struc['n1'], struc['n2'], struc['n3']), (struc['n4'], struc['n5'], struc['n6']), (struc['n7'], struc['n8'], struc['n9']), (struc['n1'], struc['n4'], struc['n7']), (struc['n2'], struc['n5'], struc['n8']), (struc['n3'], struc['n6'], struc['n9']), (struc['n1'], struc['n5'], struc['n9']), (struc['n3'], struc['n5'], struc['n7'])]
+            for i in winning_probs:
+                if i == ('X', 'X', 'X'):
+                    end('X')
+                elif i == ('O', 'O', 'O'):
+                    end('O')
+                    
+        #Draw condtion
+        if n == 9:
+            end('D')
+            
+        #X's Turn
+        if Turn == 'X':
+            print("X's Turn")
+            inp = input()
+            if inp in reserved_places:
+                print("Wrong input! Reserved place, try again please.")
+                continue
+            elif int(inp) < 1 or int(inp) > 9:
+                print("Wrong input!, try again please.")
+                continue
+            for i in struc.keys():
+                if inp == i[-1]:
+                    struc[i] = 'X'
+                    reserved_places.append(inp)
+                    n += 1
+            Turn = 'O'
+            continue
+        
+        #Y's Turn
+        elif Turn == 'O':
+            print("O's Turn")
+            inp = input()
+            if inp in reserved_places:
+                print("Wrong input! Reserved place, try again please.")
+                continue
+            elif int(inp) < 1 or int(inp) > 9:
+                print("Wrong input!, try again please.")
+                continue
+            for i in struc.keys():
+                if inp == i[-1]:
+                    struc[i] = 'O'
+                    reserved_places.append(inp)
+                    n += 1
+            Turn = 'X'
+    
+def Toss():
+    Turn = None
+    i = randint(0, 2)
+    if i == 0:
+        Turn = 'O'
+    else:
+        Turn = 'X'
+    return Turn
 
-This is a text-based implementation of the classic game Tic-Tac-Toe, developed by Abdallah Alnuaimy. It allows two players to take turns marking spaces on a 3x3 grid with X's and O's. The first player to get three of their marks in a row (horizontally, vertically, or diagonally) wins the game.
-
-**How to Play**
-
-1. **Run the Game:** Execute the Python script (`python tictactoe.py`) to start the game.
-2. **The Toss:** A virtual coin toss randomly determines who goes first (X or O).
-3. **Taking Turns:**
-   - Players take turns entering the number (1-9) corresponding to the position they want to mark on the grid. 
-   - The grid is displayed after each move to show the current state of the game.
-4. **Winning:** The first player to get three of their marks in a row wins!
-5. **Draw:** If all nine spaces are filled and neither player has won, the game is a draw.
-6. **Play Again:** You'll be asked if you want to play another round.
-
-**Code Structure and Functionality**
-
-* **`main_menu()`:**
-   - Welcomes the players.
-   - Simulates a coin toss to decide the starting player (`Toss()` function).
-   - Starts the game (`xoImplementation()` function).
-
-* **`xoImplementation()`:**
-   - Initializes a dictionary (`struc`) to represent the game board, with keys like 'n1', 'n2' corresponding to positions, and values initially set to '1', '2', etc.
-   - Manages the game loop:
-     - Prints the current state of the board.
-     - Checks for winning conditions or a draw after each move.
-     - Prompts the current player for their move.
-     - Validates the input to ensure it's a valid position and not already taken.
-     - Updates the board and switches turns.
-     - Ends the game if there's a winner or a draw (`end()` function).
-
-* **`Toss()`:**
-   - Uses a random number generator to determine the starting player (X or O).
-
-* **`end()`:**
-   - Declares the winner or a draw.
-   - Asks the players if they want to play again.
-     - If yes, restarts the game from `main_menu()`.
-     - If no, exits the program.
-
-**Key Improvements:**
-
-- **Clear Prompts and Messages:** The game provides clear instructions and feedback to the players.
-- **Input Validation:** Prevents invalid inputs (out-of-range numbers, already occupied positions).
-- **Game Logic:**  Handles win/draw conditions correctly and determines the next player's turn.
-
-**Future Enhancements:**
-
-- **Graphical User Interface (GUI):**  Enhance the visual experience by creating a graphical interface.
-- **AI Opponent:** Implement an AI player using algorithms like Minimax to make the game more challenging.
-- **Advanced Features:**  Add features like score tracking, difficulty levels, or different board sizes.
-
-
-
-**How to Run the Game**
-
-1. **Clone the Repository:** 
-   ```bash
-   git clone <repository_url>
-   ```
-2. **Navigate to the Directory:**
-    ```bash
-    cd tic-tac-toe-python
-    ```
-3. **Run the Script:**
-    ```bash
-    python tictactoe.py
-    ```
+def end(State):
+    if State == 'D':
+        print("it's a DRAW!")
+    else:
+        print(f"Congratulations! {State} Won!")
+    while True:
+        choice = input("Would you like to play again? \nEnter (y) for Yes and (n) for No: ")
+        if choice in ['y', 'Y']:
+            main_menu()
+        elif choice in ['n', 'N']:
+            exit()
+        else:
+            print("Wrong input")
+main_menu()
